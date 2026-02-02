@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KVKK Aydınlatma Metni | Web Tasarım & Yazılım Çözümleri</title>
+    <meta name="description"
+        content="Webasil Web Tasarım & Yazılım ÇözümleriKVKK aydınlatma metni. Kişisel verilerinizin işlenmesi ve korunması hakkında detaylı bilgilendirme.">
+    <meta name="keywords"
+        content="KVKK, kişisel veri koruma, aydınlatma metni, web tasarım, yazılım geliştirme">
+    <meta name="author" content="Web Tasarım & Yazılım Çözümleri" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="assets/img/fav.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="assets/img/logo.png" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563EB',
+                        secondary: '#1E40AF',
+                        accent: '#38BDF8',
+                        anthracite: '#0F172A',
+                        surface: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+        body {
+            font-family: "Outfit", sans-serif;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0%)
+            }
+
+            100% {
+                transform: translateX(-50%)
+            }
+        }
+
+        .animate-marquee {
+            animation: marquee 20s linear infinite;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #10b981;
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-overlay {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            visibility: hidden;
+        }
+
+        .mobile-menu-overlay.open {
+            transform: translateX(0);
+            visibility: visible;
+        }
+
+        .mobile-menu-backdrop {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+
+        .mobile-menu-backdrop.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            padding: 8px 0;
+            z-index: 100;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transform: translateY(5px);
+            transition: all 0.2s ease;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 8px 20px;
+            color: #1f2937;
+            font-size: 0.813rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-item:hover {
+            background: #fafafb;
+            color: #2563EB;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+    <!-- Top Banner -->
+    <div class="bg-gradient-to-r from-primary via-accent to-secondary text-white py-2.5 overflow-hidden sticky top-0 z-50"
+        id="topBanner">
+        <div class="animate-marquee flex space-x-8 w-max whitespace-nowrap">
+            <span class="text-xs sm:text-sm font-semibold">
+                ✓ Hızlı Teslimat – Responsive Tasarım – Modern Teknolojiler – Uzman Yazılım Ekibi – SEO Uyumlu Kodlama – E-Ticaret Çözümleri – 7/24 Teknik Destek
+            </span>
+            <span class="text-xs sm:text-sm font-semibold">
+                ✓ Hızlı Teslimat – Responsive Tasarım – Modern Teknolojiler – Uzman Yazılım Ekibi – SEO Uyumlu Kodlama – E-Ticaret Çözümleri – 7/24 Teknik Destek
+            </span>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="bg-white shadow-lg sticky z-40" id="mainHeader" style="top: 0;">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo - Sol -->
+                <div class="flex items-center flex-shrink-0">
+                    <a href="index.html">
+                        <div class="h-16 w-auto p-2 rounded-lg flex items-center">
+                            <img src="assets/img/logo.png" alt="Web Tasarım Logo" class="h-full w-auto object-contain">
+                        </div>
+                    </a>
+                </div>
+                <!-- Navigation Menu - Orta -->
+                <nav class="hidden lg:flex items-center justify-center flex-1 space-x-6 px-4">
+                    <a href="index.html#anasayfa" class="nav-link text-anthracite hover:text-primary font-semibold text-sm">Ana Sayfa</a>
+                    <a href="index.html#hizmetlerimiz"
+                        class="nav-link text-anthracite hover:text-primary font-semibold text-sm">Hizmetlerimiz</a>
+                    <a href="index.html#bocek-turleri"
+                        class="nav-link text-anthracite hover:text-primary font-semibold text-sm">Referanslarımız</a>
+                    <a href="index.html#neden-biz" class="nav-link text-anthracite hover:text-primary font-semibold text-sm">Neden Biz?</a>
+                    <a href="index.html#surec" class="nav-link text-anthracite hover:text-primary font-semibold text-sm">Süreç</a>
+                    <a href="index.html#sss" class="nav-link text-anthracite hover:text-primary font-semibold text-sm">S.S.S</a>
+                    <!-- Kurumsal Dropdown -->
+                    <div class="dropdown">
+                        <a href="hakkimizda.html"
+                            class="nav-link text-anthracite hover:text-primary font-semibold text-sm flex items-center">
+                            Kurumsal <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="hakkimizda.html" class="dropdown-item">Hakkımızda</a>
+                            <a href="gizlilik-politikasi.html" class="dropdown-item">Gizlilik Politikası</a>
+                            <a href="kvkk.html" class="dropdown-item">KVKK</a>
+                            <a href="cerez-politikasi.html" class="dropdown-item">Çerez Politikası</a>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Butonlar - Sağ -->
+                <div class="flex items-center space-x-3 flex-shrink-0">
+                    <!-- Mobile Menu Button -->
+                    <button id="mobileMenuBtn" class="lg:hidden text-anthracite p-2 hover:text-primary transition">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                    <!-- Telefon Butonu - Desktop Only -->
+                    <a href="tel:+905512708926"
+                        class="hidden lg:flex bg-primary text-white px-6 py-3 rounded-full shadow-lg hover:bg-primary/90 transition items-center justify-center space-x-2 font-semibold">
+                        <i class="fas fa-phone"></i>
+                        <span>+90 551 270 89 26</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobileMenuBackdrop"
+        class="mobile-menu-backdrop fixed inset-0 bg-gray-900/60 backdrop-blur-sm z-50 lg:hidden px-4"></div>
+    <div id="mobileMenu"
+        class="mobile-menu-overlay fixed top-0 left-0 bottom-0 w-[85%] max-w-[400px] bg-white z-[60] lg:hidden shadow-2xl flex flex-col">
+        <!-- Mobile Menu Header -->
+        <div class="flex items-center justify-between p-4 border-b border-gray-200">
+            <div class="h-12 w-auto">
+                <img src="assets/img/logo.png" alt="Web Tasarım Logo" class="h-full w-auto object-contain">
+            </div>
+            <button id="mobileMenuCloseBtn"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-50 text-gray-400 hover:text-primary transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Navigation -->
+        <div class="flex-1 overflow-y-auto p-6">
+            <div class="space-y-1">
+                <a href="index.html#anasayfa"
+                    class="block p-4 rounded-2xl text-gray-600 hover:bg-primary/5 hover:text-primary transition-all font-semibold">
+                    <span>Ana Sayfa</span>
+                </a>
+                <a href="index.html#hizmetlerimiz"
+                    class="block p-4 rounded-2xl text-gray-600 hover:bg-primary/5 hover:text-primary transition-all font-semibold">
+                    <span>Hizmetlerimiz</span>
+                </a>
+                <a href="index.html#bocek-turleri"
+                    class="block p-4 rounded-2xl text-gray-600 hover:bg-primary/5 hover:text-primary transition-all font-semibold">
+                    <span>Referanslarımız</span>
+                </a>
+                <a href="index.html#neden-biz"
+                    class="block p-4 rounded-2xl text-gray-600 hover:bg-primary/5 hover:text-primary transition-all font-semibold">
+                    <span>Neden Bizi Seçmelisiniz?</span>
+                </a>
+                <a href="index.html#surec"
+                    class="block p-4 rounded-2xl text-gray-600 hover:bg-primary/5 hover:text-primary transition-all font-semibold">
+                    <span>Nasıl Çalışıyoruz</span>
+                </a>
+                <a href="index.html#sss"
+                    class="block p-4 rounded-2xl text-gray-600 hover:bg-primary/5 hover:text-primary transition-all font-semibold">
+                    <span>Sıkça Sorulan Sorular</span>
+                </a>
+                <a href="hakkimizda.html"
+                    class="block p-4 rounded-2xl text-gray-600 hover:bg-primary/5 hover:text-primary transition-all font-semibold">
+                    <span>Hakkımızda</span>
+                </a>
+            </div>
+
+            <!-- Mobile Contact Info -->
+            <div class="mt-12 pt-8 border-t border-gray-100">
+                <h5 class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-6">İletişime Geçin</h5>
+                <div class="space-y-4">
+                    <a href="tel:+905512708926" class="flex items-center space-x-4 text-gray-900 font-bold italic">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <span class="text-sm font-extrabold tracking-widest text-[#2f3542]">+90 551 270 89 26</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Content -->
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="bg-white rounded-[2.5rem] p-8 md:p-16 shadow-sm border border-gray-100">
+                <h1 class="text-4xl font-bold text-gray-900 mb-8">KVKK Aydınlatma Metni</h1>
+                <div class="prose prose-lg prose-slate text-gray-600 space-y-10">
+                    <div class="bg-primary/5 p-4 rounded-xl border-l-4 border-primary">
+                        <p class="text-sm italic text-gray-500 mb-0">Son Güncelleme Tarihi: 31 Ocak 2026</p>
+                    </div>
+
+                    <p class="leading-relaxed">Webasil Web Tasarım & Yazılım Çözümleri("Web Tasarım & Yazılım Çözümleri" veya "Şirket") olarak, kişisel
+                        verilerinizin güvenliği hususuna azami hassasiyet göstermekteyiz. Bu bilinçle, Şirket olarak
+                        ürün ve hizmetlerimizden faydalanan kişiler dahil, Şirket ile ilişkili tüm şahıslara ait her
+                        türlü kişisel verilerin 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVK Kanunu")'na uygun
+                        olarak işlenmesine ve muhafaza edilmesine büyük önem vermekteyiz.</p>
+
+                    <h2 class="text-2xl font-bold text-gray-900 border-b-2 border-primary/20 pb-2">1. Veri Sorumlusunun Kimliği</h2>
+                    <p>KVK Kanunu uyarınca, "Veri Sorumlusu" sıfatıyla Web Tasarım & Yazılım Çözümleri, kişisel verilerinizi aşağıda
+                        açıklanan amaçlar kapsamında ve hukuka uygunluk çerçevesinde işlemektedir. Şirketimiz,
+                        verilerinizin yasal sınırlar dahilinde işlenmesini ve korunmasını temin etmek amacıyla gerekli
+                        teknik ve idari tedbirleri almaktadır.</p>
+
+                    <h2 class="text-2xl font-bold text-gray-900 border-b-2 border-primary/20 pb-2">2. Kişisel Verilerin İşlenme Amaçları</h2>
+                    <p>Toplanan kişisel verileriniz, Şirketimiz tarafından sunulan hizmetlerin kusursuz ifası ve
+                        operasyonel süreçlerin yönetimi amacıyla aşağıda belirtilen kapsamlarda işlenmektedir:</p>
+                    <ul class="list-disc pl-6 space-y-3">
+                        <li><strong>Hizmet Operasyonları:</strong> Web tasarım ve yazılım geliştirme projelerinin planlanması, geliştirme
+                            ekiplerinin yönlendirilmesi ve proje teslimatlarının sonuçlandırılması.
+                        </li>
+                        <li><strong>Müşteri İlişkileri:</strong> Hizmet sonrası destek süreçlerinin yürütülmesi, şikayet
+                            ve önerilerin değerlendirilmesi.</li>
+                        <li><strong>Finansal Süreçler:</strong> Hizmet bedellerinin tahsilatı, fatura ve e-arşiv
+                            süreçlerinin yönetimi.</li>
+                        <li><strong>Yasal Mevzuat:</strong> Tüketici Kanunu ve Dijital Hizmetler Standartları
+                            kapsamındaki zorunlu raporlamalar ve bildirimler.</li>
+                        <li><strong>Güvenlik:</strong> Şirketimizin sunduğu dijital platformların güvenliğinin
+                            sağlanması ve olası suiistimallerin engellenmesi.</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-bold text-gray-900 border-b-2 border-primary/20 pb-2">3. İşlenen Verilerin Aktarılması</h2>
+                    <p>İşlenen kişisel verileriniz, yukarıda belirtilen amaçların gerçekleştirilmesi ile sınırlı olarak
+                        ve KVK Kanunu'nun 8. ve 9. maddelerine uygun şekilde aktarılabilir:</p>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>Hukuki yükümlülüklerimizin yerine getirilmesi amacıyla resmi makamlara (Bakanlıklar,
+                            denetleyici kurumlar).</li>
+                        <li>Hizmetin ifası için gerekli olan iş ortaklarımıza (Hosting sağlayıcılar, ödeme
+                            sistemleri, analitik platformlar).</li>
+                        <li>Finansal denetimlerin yapılabilmesi için yetkili bağımsız denetim kuruluşlarına.</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-bold text-gray-900 border-b-2 border-primary/20 pb-2">4. Veri Toplama Yöntemi ve Hukuki Sebep</h2>
+                    <p>Kişisel verileriniz, Şirketimiz tarafından farklı kanallar (web sitesi iletişim formları, e-posta
+                        iletişimi, telefon görüşmeleri, proje yönetim platformları) aracılığıyla; sözleşmenin kurulması,
+                        kanuni yükümlülüklerin yerine getirilmesi ve Şirketimizin meşru menfaatleri gibi hukuki
+                        sebeplere dayanarak toplanmaktadır.</p>
+
+                    <h2 class="text-2xl font-bold text-gray-900 border-b-2 border-primary/20 pb-2">5. KVK Kanunu'nun 11. Maddesi Kapsamındaki Haklarınız</h2>
+                    <p>Kişisel veri sahipleri olarak, haklarınıza ilişkin taleplerinizi Web Tasarım & Yazılım Çözümleri'ye iletmeniz
+                        durumunda, talebin niteliğine göre en geç 30 gün içinde sonuçlandırılacaktır. Haklarınız
+                        şunlardır:</p>
+                    <ol class="list-decimal pl-6 space-y-2">
+                        <li>Kişisel veri işlenip işlenmediğini öğrenme.</li>
+                        <li>Kişisel verileri işlenmişse buna ilişkin bilgi talep etme.</li>
+                        <li>Verilerin işlenme amacını ve bunların amacına uygun kullanılıp kullanılmadığını öğrenme.
+                        </li>
+                        <li>Yurt içinde veya yurt dışında kişisel verilerin aktarıldığı üçüncü kişileri bilme.</li>
+                        <li>Kişisel verilerin eksik veya yanlış işlenmiş olması hâlinde bunların düzeltilmesini isteme.
+                        </li>
+                        <li>KVK Kanunu 7. maddede öngörülen şartlar çerçevesinde kişisel verilerin silinmesini veya yok
+                            edilmesini isteme.</li>
+                    </ol>
+
+                    <h2 class="text-2xl font-bold text-gray-900 border-b-2 border-primary/20 pb-2">6. Başvuru Prosedürü</h2>
+                    <p>Yukarıda belirtilen haklarınızı kullanmak için, kimliğinizi tespit edici gerekli bilgiler ile KVK
+                        Kanunu'nun 11. maddesinde belirtilen haklarınızdan hangisini kullanmayı talep ettiğinize yönelik
+                        açıklamanızı içeren form veya dilekçenizi aşağıdaki iletişim kanallarımızdan bize
+                        ulaştırabilirsiniz.</p>
+
+                    <div
+                        class="bg-anthracite text-white p-8 rounded-[3rem] space-y-6 shadow-2xl relative overflow-hidden">
+                        <div class="relative z-10">
+                            <h3 class="text-xl font-bold mb-6 italic text-primary">KVKK İletişim Hattı</h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="space-y-4">
+                                    <div class="flex items-center space-x-4">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-primary border border-white/20">
+                                            <i class="fas fa-id-card"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-[10px] uppercase font-black text-gray-400">Veri Sorumlusu
+                                                Temsilcisi</p>
+                                            <p class="font-bold text-sm">Webasil Web Tasarım & Yazılım ÇözümleriUyum Birimi</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-primary border border-white/20">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-[10px] uppercase font-black text-gray-400">E-Posta Başvurusu
+                                            </p>
+                                            <p class="font-bold text-sm">info@webasil.com</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="space-y-4">
+                                    <div class="flex items-center space-x-4">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-primary border border-white/20">
+                                            <i class="fas fa-phone-alt"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-[10px] uppercase font-black text-gray-400">Danışma Hattı</p>
+                                            <p class="font-bold text-sm">+90 551 270 89 26</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-primary border border-white/20">
+                                            <i class="fas fa-university"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-[10px] uppercase font-black text-gray-400">Yasal Adres</p>
+                                            <p class="font-bold text-sm">İstanbul, Türkiye</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-gray-400 text-center italic">Bu aydınlatma metni, Web Tasarım & Yazılım Çözümleri
+                        tarafından veri
+                        sahiplerini bilgilendirmek amacıyla KVK Kanunu standartlarına uygun olarak hazırlanmıştır.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white pt-24 pb-12 border-t border-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-12 mb-20">
+                <!-- Brand -->
+                <div class="md:col-span-1">
+                    <img src="assets/img/logo.png" alt="Web Tasarım Logo" class="h-16 w-auto mb-8">
+                    <p class="text-gray-500 text-sm leading-relaxed mb-8">
+                        Modern teknolojiler ve uzman ekibimizle, işletmenizin dijital ihtiyaçlarına uygun, responsive ve SEO uyumlu web tasarım ve yazılım çözümleri sunuyoruz.
+                    </p>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="text-sm font-bold text-gray-900 uppercase tracking-widest mb-8">Hizmetlerimiz</h4>
+                    <ul class="space-y-4">
+                        <li><a href="index.html#hizmetlerimiz"
+                                class="text-gray-500 hover:text-primary text-sm transition-colors">Kurumsal Web Tasarım</a></li>
+                        <li><a href="index.html#hizmetlerimiz"
+                                class="text-gray-500 hover:text-primary text-sm transition-colors">E-Ticaret Çözümleri</a>
+                        </li>
+                        <li><a href="index.html#hizmetlerimiz"
+                                class="text-gray-500 hover:text-primary text-sm transition-colors">Mobil Uygulama</a>
+                        </li>
+                        <li><a href="index.html#hizmetlerimiz"
+                                class="text-gray-500 hover:text-primary text-sm transition-colors">Google Chrome Eklentisi</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-sm font-bold text-gray-900 uppercase tracking-widest mb-8">Kurumsal</h4>
+                    <ul class="space-y-4">
+                        <li><a href="hakkimizda.html"
+                                class="text-gray-500 hover:text-primary text-sm transition-colors">Hakkımızda</a></li>
+                        <li><a href="index.html#bocek-turleri"
+                                class="text-gray-500 hover:text-primary text-sm transition-colors">Referanslarımız</a>
+                        </li>
+                        <li><a href="index.html#sss"
+                                class="text-gray-500 hover:text-primary text-sm transition-colors">S.S.S.</a></li>
+                        <li><a href="index.html#iletisim"
+                                class="text-gray-500 hover:text-primary text-sm transition-colors">İletişim</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h4 class="text-sm font-bold text-gray-900 uppercase tracking-widest mb-8">Yasal</h4>
+                    <ul class="space-y-4">
+                        <li><a href="gizlilik-politikasi.html"
+                                class="text-gray-500 hover:text-primary text-sm transition-colors">Gizlilik
+                                Politikası</a></li>
+                        <li><a href="kvkk.html" class="text-gray-500 hover:text-primary text-sm transition-colors">KVKK
+                                Metni</a></li>
+                        <li><a href="cerez-politikasi.html"
+                                class="text-gray-500 hover:text-primary text-sm transition-colors">Çerez Politikası</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-xs mb-4 md:mb-0">&copy; 2026 Web Tasarım & Yazılım Çözümleri. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuBackdrop = document.getElementById('mobileMenuBackdrop');
+        const mobileMenuCloseBtn = document.getElementById('mobileMenuCloseBtn');
+
+        function openMenu() {
+            mobileMenu.classList.add('open');
+            mobileMenuBackdrop.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            mobileMenuBackdrop.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        mobileMenuBtn?.addEventListener('click', openMenu);
+        mobileMenuCloseBtn?.addEventListener('click', closeMenu);
+        mobileMenuBackdrop?.addEventListener('click', closeMenu);
+    </script>
+</body>
+
+</html>
